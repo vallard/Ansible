@@ -1,0 +1,6 @@
+---
+# file: dockers.yml
+- hosts: ec2
+  sudo: True
+  roles:
+    - docker

@@ -1,0 +1,35 @@
+# Creates an AWS image.
+# call with: ansible-playbook launch-ec2.yml
+# requires that you have boto installed and a ~/.boto file installed.
+# the .boto file should have the following env variables: 
+# aws_access_key_id = ABCD...
+# aws_secret_access_key = ZYXWVUTSR..
+
+#- name: Create a t1.micro AWS ubuntu 14.04 image
+#  hosts: localhost
+#  gather_facts: False
+#  connection: local
+#  vars: 
+#    key_pair: awskeypair
+#    instance_type: t2.micro
+#    security_group: default
+#    image: ami-3d50120d
+#    region: us-west-2 
+--- 
+- name: Launch Instance
+  local_action: ec2 key_name={{ key_pair }}
+                group={{ security_group }} 
+                instance_type={{ instance_type }} 
+                image={{ image }} 
+                region={{ region }} 
+                wait=true 
+  register: ec2
+- debug: var=ec2
+
+- name: Add new instance to host group
+  local_action: add_host hostname={{ item.public_dns_name }} groupname="aws-instances"
+  with_items: ec2.instances
+
+- name: Wait for SSH to come up
+  local_action: wait_for host={{ item.public_dns_name }} port=22 delay=60 timeout=320 state=started
+  with_items: ec2.instances

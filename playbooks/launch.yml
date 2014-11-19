@@ -1,0 +1,8 @@
+---
+# file: launch.yml
+# builds and adds an 'aws-instances' to the inventory list.
+- hosts: localhost
+  connection: local
+  gather_facts: False
+  roles:
+    - ec2

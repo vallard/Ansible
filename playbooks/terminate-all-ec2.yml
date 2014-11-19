@@ -1,0 +1,27 @@
+# Delete's AWS images
+# this post has way to get images. 
+# call with: ansible-playbook terminate-ec2.yml
+# requires that you have boto installed and a ~/.boto file installed.
+# the .boto file should have the following env variables: 
+# aws_access_key_id = ABCD...
+# aws_secret_access_key = ZYXWVUTSR..
+
+- name: Destroy all instances for this region
+  hosts: localhost
+  gather_facts: True
+  connection: local
+  vars: 
+    - region: 'us-west-2'
+  tasks:
+    - name: Get Instances
+      local_action: ec2_facts
+      register: ec2_facts
+    - debug: var=ec2_facts
+    - name: Terminate instances 
+      local_action: 
+        module: ec2
+        state: 'absent'
+        instance_ids: '{{ ec2_facts.instance_ids }}'
+        region: '{{ region }}'
+        wait: True
+      with: ec2_facts

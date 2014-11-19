@@ -1,0 +1,4 @@
+---
+#file: site.yml
+- include: launch.yml
+- include: dockers.yml

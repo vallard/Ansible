@@ -1,0 +1,5 @@
+key_pair: awskeypair
+instance_type: t2.micro
+security_group: default
+image: ami-3d50120d
+region: us-west-2 
