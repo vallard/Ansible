@@ -6,22 +6,22 @@
 # aws_access_key_id = ABCD...
 # aws_secret_access_key = ZYXWVUTSR..
 
-- name: Destroy all instances for this region
-  hosts: localhost
+- hosts: ec2
   gather_facts: True
   connection: local
   vars: 
     - region: 'us-west-2'
   tasks:
-    - name: Get Instances
+    - name: Gather EC2 facts
       local_action: ec2_facts
-      register: ec2_facts
-    - debug: var=ec2_facts
+
+    - debug: var=hostvars[inventory_hostname]
+    - debug: msg="{{ hostvars[inventory_hostname]['ec2_id'] }}"
+
     - name: Terminate instances 
-      local_action: 
-        module: ec2
-        state: 'absent'
-        instance_ids: '{{ ec2_facts.instance_ids }}'
-        region: '{{ region }}'
-        wait: True
-      with: ec2_facts
+      local_action: ec2
+        state='absent'
+        instance_ids='{{ ec2_id }}'
+        region='{{ region }}'
+        wait=True
+      #with_items: hostvars[inventory_hostname]['ec2_id']
