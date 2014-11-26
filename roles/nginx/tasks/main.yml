@@ -1,5 +1,7 @@
+# this file is for running on an individual host: instance1
+# this was created just to try it out on one server
 - name: Configure webserver with nginx
-  hosts: webservers
+  hosts: instance1
   sudo: True
   tasks:
     - name: install nginx

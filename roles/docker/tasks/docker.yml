@@ -1,0 +1,23 @@
+# installs docker on Ubuntu 14.04. hosts
+# this one is for just running on one host: instance1
+- name: Install Docker on an Ubuntu 14.04 host
+  hosts: instance1
+  sudo: true
+  tasks:  
+  - name: Get Docker
+    apt: name=docker.io update_cache=yes
+
+  - name: Link docker
+    file: >
+      dest=/usr/local/bin/docker
+      src=/usr/bin/docker.io
+      state=link
+
+  - name: Get Docker key
+    apt_key: keyserver=hkp://keyserver.ubuntu.com:80 id=36A1D7869245C8950F966E92D8576A8BA88D21E9
+
+  - name: Add key to Deb source list
+    apt_repository: repo="deb https://get.docker.com/ubuntu docker main"  state=present
+
+  - name: Get lxc-docker
+    apt: name=lxc-docker update_cache=yes state=present
