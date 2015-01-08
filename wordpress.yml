@@ -1,0 +1,6 @@
+---
+# file: wordpress.yml
+- hosts: ec2
+  sudo: True
+  roles:
+    - wordpress

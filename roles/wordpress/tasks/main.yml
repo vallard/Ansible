@@ -1,0 +1,7 @@
+# installs mysql and wordpress image
+---
+- name: ensure MySQL is running
+  docker: image=mysql name=wpsql env="MYSQL_ROOT_PASSWORD=cisco" ports=4000:3306
+
+- name: ensure Wordpress is running
+  docker: image=wordpress name=wordpress_1 links=wpsql:mysql ports=80:80

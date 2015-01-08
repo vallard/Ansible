@@ -17,3 +17,9 @@
 
 - name: Get lxc-docker
   apt: name=lxc-docker update_cache=yes state=present
+
+- name: Ensure Python pip is installed
+  apt: name=python-pip update_cache=yes state=present
+
+- name: Ensure Docker Py is installed
+  pip: name=docker-py state=present
