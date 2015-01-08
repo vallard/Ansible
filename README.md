@@ -17,7 +17,16 @@ Do this on OSX.
 
 # brew install ansible
 
-See my blog article:
-http://benincosa.com/blog/?p=2651
+[See my blog article for more info](http://benincosa.com/blog/?p=2651)
 
-More to come. 
+Wordpress Demo
+===============
+This demo will do the following:
+  * Provision an AWS EC2 ubuntu instance (tiny-m1)
+  * Install Docker and Docker Python libraries
+  * Install and run a MySQL and Wordpress container  
+
+Run the command:
+```bash
+ansible-playbook site.yml
+```
