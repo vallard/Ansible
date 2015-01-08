@@ -15,7 +15,9 @@ Initial Setup
 =============
 Do this on OSX.
 
-# brew install ansible
+```bash
+brew install ansible
+```
 
 [See my blog article for more info](http://benincosa.com/blog/?p=2651)
 
