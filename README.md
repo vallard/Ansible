@@ -21,6 +21,11 @@ brew install ansible
 
 [See my blog article for more info](http://benincosa.com/blog/?p=2651)
 
+You'll also need an AWS account.  
+
+Add your keypair into roles/ec2/vars/main.yml so that you can log into the 
+AWS instances after you create them.  
+
 Wordpress Demo
 ===============
 This demo will do the following:
