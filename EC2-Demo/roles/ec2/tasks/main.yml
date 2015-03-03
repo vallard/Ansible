@@ -23,6 +23,7 @@
                 image={{ image }} 
                 region={{ region }} 
                 wait=true 
+                instance_tags="name"="test"
   register: ec2
 - debug: var=ec2
 

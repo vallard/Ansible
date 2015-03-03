@@ -6,7 +6,7 @@ See my blog for more details: http://benincosa.com
 
 The intent is to eventually show how to run Ansible with Docker on 
   * AWS
-  * OpenStack
+  * OpenStack (MetaCloud)
   * Digital Ocean
 
 I also hope to add some modules for Cisco UCS, Nexus, and ACI
