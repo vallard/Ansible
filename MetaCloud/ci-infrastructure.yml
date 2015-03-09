@@ -5,3 +5,4 @@
     - coreos-docker
     - mount_volume
     - gitlab
+    - jenkins
