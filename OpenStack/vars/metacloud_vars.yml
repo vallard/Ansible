@@ -1,0 +1,11 @@
+---
+keypair: tco-gold
+# added port 22 to the security group
+security_group: default
+
+# we use Coreos for this application
+coreos_image_id: bc3c7ad4-33d5-4702-a01a-b4b65b5c14a3
+
+# this is the floating IP pool that we are able to get IPs from. 
+floating_ip_pool: nova
+

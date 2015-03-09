@@ -1,0 +1,8 @@
+- name: Ensure Continuous Integration Lab is up
+  hosts: ci-server
+  sudo: true
+  roles:
+    - coreos-docker
+    - mount_volume
+    - gitlab
+    - jenkins

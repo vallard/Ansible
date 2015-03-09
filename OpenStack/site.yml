@@ -1,0 +1,3 @@
+- include: metacloud-deploy.yml
+- include: coreos-bootstrap.yml
+- include: ci-infrastructure.yml
