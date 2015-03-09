@@ -31,4 +31,6 @@ This can be easily done by navigating to the Access & Security navigation bar in
 In addition you'll need to define variables that are inside the main vars/ directory.  
 These are security groups and ip pools. 
 
+### Encryption
 
+I use Ansible Vault to maintain passwords.  To see how this was created and secured, [See this writeup](http://benincosa.com/?p=3235)
