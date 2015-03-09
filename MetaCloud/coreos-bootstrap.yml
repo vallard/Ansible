@@ -1,5 +1,0 @@
-- name: Make sure coreos is ready to role. 
-  hosts: ci-server
-  gather_facts: False
-  roles:
-    - defunctzombie.coreos-bootstrap

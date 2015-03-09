@@ -1,9 +1,0 @@
----
-- name: Start etcd
-  service: name=etcd.service state=started
-
-- name: Install docker-py
-  # need to make sure version is 0.7.2 to match docker 1.6
-  # if coreos updates then it would need docker-py 1.0.0 that has 
-  # 1.7 version of the API
-  pip: name=docker-py version=0.7.2

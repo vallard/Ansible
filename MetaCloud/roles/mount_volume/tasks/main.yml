@@ -1,3 +1,0 @@
----
-- name: make sure elastic block storage is mounted.
-  mount: src=/dev/vdb1 name=/vol fstype=ext2 state=mounted

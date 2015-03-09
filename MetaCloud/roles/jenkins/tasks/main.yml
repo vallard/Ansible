@@ -1,6 +1,0 @@
----
-- name: Make sure file is in place
-  file: path=/vol/jenkins_home owner=1000 state=directory
-
-- name: Ensure Jenkins is up
-  docker: image="jenkins" volumes=/vol/jenkins_home:/var/jenkins_home name=jenkins ports=8080:8080
