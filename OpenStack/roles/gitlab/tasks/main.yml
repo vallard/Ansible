@@ -4,12 +4,17 @@
 
 - name: Ensure PostGresql is up
   docker: image="sameersbn/postgresql:latest" volumes=/vol/gitlab/data:/var/lib/postgresql env="DB_NAME=gitlabhq_production,DB_USER=gitlab,DB_PASS={{gitlab_db_password}}" name=postgresql
+  register: result
 
-- name: Get IP address of docker0
-  raw: "ip addr | grep docker0 | awk '/inet/{print $2}' | awk -F/ '{print $1}'"
-  register: ip_address
+#- name: Get IP address of docker0
+#  raw: "ip addr | grep docker0 | awk '/inet/{print $2}' | awk -F/ '{print $1}'"
+#  register: ip_address
+#
+#- debug: msg="docker0 ip address is {{ip_address.stdout }}"
 
-- debug: msg="docker0 ip address is {{ip_address.stdout }}"
+- name: Wait for a few seconds if the postrgres just came up...
+  pause: seconds=30
+  when: result|changed
 
 - name: Ensure Gitlab is up
   # here port 22 in the container is mapped to port 1022 on the docker host
